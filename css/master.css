@@ -1,7 +1,5 @@
 /* Cascading stylesheet for the website */
 
-/* Text inside these asterisks and slashes are comments for human */
-
   a {
     color: blue;
     text-decoration: none; /* This means we do not want hyperlinks to be underlined */
@@ -17,6 +15,7 @@
     color: black;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    margin: 0;
    }
 
   footer {

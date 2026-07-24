@@ -1,193 +1,334 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
+import "../styles/portfolio.css"
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const doclistStyles = {
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
+const EMAIL = "mohsinshah3171@gmail.com"
+const PHONE = "+1 306 380 5477"
+const LINKEDIN = "https://linkedin.com/in/syed-mohsin-shah/"
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  display: `inline-block`,
-  marginBottom: 24,
-  marginRight: 12,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLinks = [
-  {
-    text: "TypeScript Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/",
-    color: "#8954A8",
-  },
-  {
-    text: "GraphQL Typegen Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/",
-    color: "#8954A8",
-  }
+const skills = [
+  { title: "Languages", items: ["SystemVerilog", "Verilog", "C/C++", "Python", "Tcl", "Bash"] },
+  { title: "EDA Tools", items: ["Synopsys VCS", "Design Compiler", "QuestaSim", "Cadence Virtuoso", "Xilinx Vivado", "Intel Quartus"] },
+  { title: "Concepts", items: ["CDC", "AXI / SPI / I2C", "STA", "UVM", "DMA", "Timing Closure"] },
+  { title: "Workflow", items: ["Git", "Linux", "Docker", "Makefile"] },
 ]
 
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
+const experience = [
   {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
+    role: "Research Assistant",
+    org: "University of Saskatchewan — Ko Lab",
+    date: "Sep 2024 – Present",
+    points: [
+      "Architected a 55-module FPGA SoC accelerator (Winograd PE array, hierarchical NoC, DMA engine, multi-bank memory, control FSMs) with end-to-end RTL design and subsystem integration.",
+      "Designed distributed SystemVerilog RTL and FSM control for compute scheduling and memory sequencing, integrating vendor DDR4 EMIF and BRAM IP over AXI.",
+      "Achieved 250 MHz timing closure on Intel Arria-10 via synthesis, STA, pipelining, retiming, and register balancing.",
+      "Reduced ASIC power 4–7% with variable-precision arithmetic units minimizing switching activity under Design Compiler.",
+      "Built self-checking testbenches with golden-reference models and Python/Tcl regression across 15+ configs, cutting debug turnaround 60%.",
+    ],
   },
   {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
+    role: "Research Collaboration — Edge AI Transportation",
+    org: "Quarterhill",
+    date: "May 2026",
+    points: [
+      "Developing an embedded edge-AI FPGA platform with multimodal sensor fusion and computer vision, optimizing real-time inference under tight compute/memory constraints.",
+      "Building automated data-acquisition and validation pipelines syncing sensor streams across 10,000+ test passages, profiling latency and accuracy pre-deployment.",
+    ],
   },
   {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
+    role: "Software Engineer",
+    org: "K2x Tech",
+    date: "2023 – 2024",
+    points: [
+      "Built production backend features and integrated AI capabilities for international clients in a 6-member team.",
+      "Improved application performance 10% via query optimization, indexing, and profiling of production workloads.",
+      "Diagnosed production issues through root-cause analysis, delivering reliable releases across cross-functional teams.",
+    ],
   },
   {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
+    role: "Research Assistant",
+    org: "Secured IoT Devices Lab, Pakistan",
+    date: "2023",
+    points: [
+      "Developed low-level embedded C firmware for ESP32 sensor nodes over SPI and I2C for real-time acquisition from analog and digital peripherals.",
+    ],
   },
 ]
+
+const projects = [
+  {
+    name: "Winograd CNN Accelerator",
+    desc: "RTL accelerator on ZCU102 hitting 5.3 TOPS on VGG16 via dataflow optimization and simulation-based functional verification.",
+    tags: ["RTL", "FPGA", "ZCU102"],
+  },
+  {
+    name: "POSIT Multiplier",
+    desc: "Variable-precision arithmetic RTL validating 4–7% power reduction through switching-activity analysis at synthesis.",
+    tags: ["Arithmetic", "Low Power"],
+  },
+  {
+    name: "Depthwise CNN Accelerator",
+    desc: "Parallel RTL architecture achieving 20× speedup through dataflow parallelism.",
+    tags: ["RTL", "Parallelism"],
+  },
+  {
+    name: "DFT for Systolic Arrays",
+    desc: "Scan chains and BIST for systolic PE arrays enabling structured post-silicon validation.",
+    tags: ["DFT", "BIST", "Verification"],
+  },
+]
+
+const education = [
+  {
+    degree: "M.Sc. Electrical Engineering",
+    org: "University of Saskatchewan",
+    meta: "July 2026 · Deep Learning Architectures, Computer Architecture, EDA Simulation",
+  },
+  {
+    degree: "B.Sc. Computer Systems Engineering",
+    org: "University of Engineering & Technology, Peshawar",
+    meta: "2023",
+  },
+]
+
+const ROLES = [
+  "RTL & FPGA Design Engineer",
+  "AI Accelerator Architect",
+  "SystemVerilog / UVM Verification",
+  "M.Sc. Electrical Engineering",
+]
+
+function useReveal() {
+  React.useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>(".reveal")
+    const io = new IntersectionObserver(
+      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add("in")),
+      { threshold: 0.12 }
+    )
+    els.forEach(el => io.observe(el))
+    return () => io.disconnect()
+  }, [])
+}
+
+function useCursorGlow() {
+  React.useEffect(() => {
+    const glow = document.querySelector<HTMLElement>(".cursor-glow")
+    if (!glow) return
+    const move = (e: MouseEvent) => {
+      glow.style.left = e.clientX + "px"
+      glow.style.top = e.clientY + "px"
+    }
+    window.addEventListener("mousemove", move)
+    return () => window.removeEventListener("mousemove", move)
+  }, [])
+}
+
+// typewriter cycling through ROLES
+function useTypewriter() {
+  const [text, setText] = React.useState("")
+  React.useEffect(() => {
+    let role = 0, char = 0, deleting = false, timer: ReturnType<typeof setTimeout>
+    const tick = () => {
+      const full = ROLES[role]
+      char += deleting ? -1 : 1
+      setText(full.slice(0, char))
+      let delay = deleting ? 40 : 90
+      if (!deleting && char === full.length) { delay = 1600; deleting = true }
+      else if (deleting && char === 0) { deleting = false; role = (role + 1) % ROLES.length; delay = 400 }
+      timer = setTimeout(tick, delay)
+    }
+    timer = setTimeout(tick, 500)
+    return () => clearTimeout(timer)
+  }, [])
+  return text
+}
 
 const IndexPage: React.FC<PageProps> = () => {
+  useReveal()
+  useCursorGlow()
+  const role = useTypewriter()
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={doclistStyles}>
-        {docLinks.map(doc => (
-          <li key={doc.url} style={docLinkStyle}>
-            <a
-              style={linkStyle}
-              href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
-            >
-              {doc.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <ul style={listStyles}>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
+    <>
+      <div className="cursor-glow" />
+      <nav className="nav">
+        <div className="wrap nav-inner">
+          <div className="brand">
+            SMS<span>.</span>
+          </div>
+          <div className="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      <header className="hero">
+        <div className="wrap hero-grid">
+          <div>
+            <span className="eyebrow">RTL &amp; FPGA Design · AI Accelerators</span>
+            <h1 className="glitch" data-text="Syed Mohsin Shah">
+              Syed <span>Mohsin&nbsp;Shah</span>
+            </h1>
+            <p className="hero-role">
+              {role}
+              <span className="cursor">&nbsp;</span>
+            </p>
+            <p className="hero-sum">
+              Graduate researcher building AI accelerators for ASIC and FPGA platforms. I design
+              system-level RTL architectures and reusable digital hardware blocks, and build
+              automated verification environments to validate design behavior.
+            </p>
+            <div className="cta-row">
+              <a className="btn btn-primary" href={`mailto:${EMAIL}`}>Get in touch</a>
+              <a className="btn btn-ghost" href="#projects">View projects</a>
+            </div>
+          </div>
+          {/* Swap inner div for <img className="avatar" src="/me.jpg" alt="Syed Mohsin Shah" /> */}
+          <div className="avatar-wrap">
+            <div className="avatar">[ ADD PHOTO ]<br />src/images</div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section id="about">
+          <div className="wrap">
+            <div className="section-head reveal">
+              <div className="k">About</div>
+              <h2>What I work on</h2>
+            </div>
+            <p className="hero-sum" style={{ maxWidth: 760 }}>
+              I focus on the full RTL flow — microarchitecture, subsystem integration, timing
+              closure, and verification — for AI-acceleration hardware. My work spans Winograd and
+              depthwise CNN accelerators, variable-precision arithmetic for power reduction, and
+              design-for-test on systolic arrays, from SystemVerilog RTL down to synthesis and STA.
+            </p>
+          </div>
+        </section>
+
+        <section id="skills">
+          <div className="wrap">
+            <div className="section-head reveal">
+              <div className="k">Toolbox</div>
+              <h2>Skills</h2>
+            </div>
+            <div className="skills-grid reveal">
+              {skills.map(g => (
+                <div className="skill-card" key={g.title}>
+                  <h3>{g.title}</h3>
+                  <div className="chips">
+                    {g.items.map(i => <span className="chip" key={i}>{i}</span>)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="experience">
+          <div className="wrap">
+            <div className="section-head reveal">
+              <div className="k">Journey</div>
+              <h2>Experience</h2>
+            </div>
+            <div className="timeline">
+              {experience.map(e => (
+                <div className="tl-item reveal" key={e.role + e.org}>
+                  <div className="tl-top">
+                    <div>
+                      <div className="tl-role">{e.role}</div>
+                      <div className="tl-org">{e.org}</div>
+                    </div>
+                    <div className="tl-date">{e.date}</div>
+                  </div>
+                  <ul>
+                    {e.points.map((p, i) => <li key={i}>{p}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="projects">
+          <div className="wrap">
+            <div className="section-head reveal">
+              <div className="k">Selected Work</div>
+              <h2>Projects</h2>
+            </div>
+            <div className="proj-grid reveal">
+              {projects.map(p => (
+                <div className="proj-card" key={p.name}>
+                  {/* Swap for <img src="..." alt={p.name} /> */}
+                  <div className="proj-thumb">Add image</div>
+                  <div className="proj-body">
+                    <h3>{p.name}</h3>
+                    <p>{p.desc}</p>
+                    <div className="proj-tags">
+                      {p.tags.map(t => <span key={t}>{t}</span>)}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="education">
+          <div className="wrap">
+            <div className="section-head reveal">
+              <div className="k">Background</div>
+              <h2>Education</h2>
+            </div>
+            <div className="edu-grid reveal">
+              {education.map(e => (
+                <div className="edu-card" key={e.degree}>
+                  <h3>{e.degree}</h3>
+                  <div className="org">{e.org}</div>
+                  <div className="meta">{e.meta}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="contact">
+          <div className="wrap reveal">
+            <div className="k" style={{ color: "var(--pink)" }}>Contact</div>
+            <h2>Let's build <span>something.</span></h2>
+            <p>
+              Open to RTL / FPGA / verification roles and research collaborations. Reach out — I
+              reply fast.
+            </p>
+            <div className="contact-links">
+              <a className="btn btn-primary" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              <a className="btn btn-ghost" href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn</a>
+              <a className="btn btn-ghost" href={`tel:${PHONE.replace(/\s/g, "")}`}>{PHONE}</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div className="wrap">© {new Date().getFullYear()} Syed Mohsin Shah · Saskatoon, SK</div>
+      </footer>
+    </>
   )
 }
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => (
+  <>
+    <html lang="en" />
+    <title>Syed Mohsin Shah — RTL & FPGA Design</title>
+    <meta
+      name="description"
+      content="Syed Mohsin Shah — M.Sc. Electrical Engineering candidate specializing in RTL and FPGA design for AI accelerators."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </>
+)

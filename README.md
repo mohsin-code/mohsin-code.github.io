@@ -1,49 +1,38 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
-</h1>
+# Syed Mohsin Shah — Portfolio
 
-## 🚀 Quick start
+Cyberpunk-themed personal portfolio. Built with [Gatsby](https://www.gatsbyjs.com/) + TypeScript, deployed as a static site to GitHub Pages at **https://mohsin-code.github.io**.
 
-1.  **Create a Gatsby site.**
+## Stack
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+- Gatsby 5 (React 18, TypeScript)
+- Plain CSS (`src/styles/portfolio.css`) — neon grid, glitch text, scroll-reveal, cursor glow
+- Google Fonts: Orbitron, Share Tech Mono, Rajdhani
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+## Develop
 
-2.  **Start developing.**
+```bash
+npm install
+npm run develop   # http://localhost:8000
+```
 
-    Navigate into your new site’s directory and start it up.
+Content lives in `src/pages/index.tsx` — edit the `skills`, `experience`, `projects`, `education` arrays.
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+Other scripts: `npm run build` (production build to `public/`), `npm run serve` (serve the build), `npm run typecheck`, `npm run clean`.
 
-3.  **Open the code and start customizing!**
+## Add images
 
-    Your site is now running at http://localhost:8000!
+Placeholders are marked in `src/pages/index.tsx`:
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+- **Profile photo** — put a file in `static/` at repo root (e.g. `static/me.jpg`), then replace the `.avatar` div with `<img className="avatar" src="/me.jpg" alt="Syed Mohsin Shah" />`.
+- **Project thumbnails** — replace each `.proj-thumb` div with an `<img>`.
 
-4.  **Learn more**
+## Deploy to GitHub Pages
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+Automated via GitHub Actions (`.github/workflows/deploy.yml`). One-time setup:
 
-## 🚀 Quick start (Netlify)
+1. Push to `main`.
+2. Repo → **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+After that, every push to `main` builds Gatsby and publishes `public/` to Pages. Watch progress in the **Actions** tab; live URL is https://mohsin-code.github.io.
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+> This is a GitHub **user site** (`<user>.github.io`), served from the domain root — no `pathPrefix` needed. If you ever rename the repo to a project site, add `pathPrefix: "/repo-name"` in `gatsby-config.ts` and build with `gatsby build --prefix-paths`.

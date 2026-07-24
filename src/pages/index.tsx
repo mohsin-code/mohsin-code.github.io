@@ -7,9 +7,10 @@ const PHONE = "+1 306 380 5477"
 const LINKEDIN = "https://linkedin.com/in/syed-mohsin-shah/"
 
 const skills = [
-  { title: "Languages", items: ["SystemVerilog", "Verilog", "C/C++", "Python", "Tcl", "Bash"] },
+  { title: "Languages", items: ["SystemVerilog", "Verilog", "VHDL", "C/C++", "Python", "Tcl", "Bash", "MATLAB"] },
   { title: "EDA Tools", items: ["Synopsys VCS", "Design Compiler", "QuestaSim", "Cadence Virtuoso", "Xilinx Vivado", "Intel Quartus"] },
-  { title: "Concepts", items: ["CDC", "AXI / SPI / I2C", "STA", "UVM", "DMA", "Timing Closure"] },
+  { title: "DV Concepts", items: ["UVM", "Self-Checking Testbenches", "CDC", "STA", "Timing Closure", "Functional Coverage"] },
+  { title: "Architecture", items: ["AXI / SPI / I2C", "DMA", "NoC", "FSM Control", "Fault Tolerance", "DFT / BIST"] },
   { title: "Workflow", items: ["Git", "Linux", "Docker", "Makefile"] },
 ]
 
@@ -24,33 +25,43 @@ const experience = [
       "Achieved 250 MHz timing closure on Intel Arria-10 via synthesis, STA, pipelining, retiming, and register balancing.",
       "Reduced ASIC power 4–7% with variable-precision arithmetic units minimizing switching activity under Design Compiler.",
       "Built self-checking testbenches with golden-reference models and Python/Tcl regression across 15+ configs, cutting debug turnaround 60%.",
+      "Evaluated spatial, depth-wise, and capacity-based tiling strategies for PE-array mapping, balancing compute utilization against on-chip memory and DSP constraints.",
     ],
   },
   {
-    role: "Research Collaboration — Edge AI Transportation",
+    role: "Research Collaboration — Edge AI Transportation (WIM)",
     org: "Quarterhill",
-    date: "May 2026",
+    date: "2026",
     points: [
-      "Developing an embedded edge-AI FPGA platform with multimodal sensor fusion and computer vision, optimizing real-time inference under tight compute/memory constraints.",
-      "Building automated data-acquisition and validation pipelines syncing sensor streams across 10,000+ test passages, profiling latency and accuracy pre-deployment.",
-    ],
-  },
-  {
-    role: "Software Engineer",
-    org: "K2x Tech",
-    date: "2023 – 2024",
-    points: [
-      "Built production backend features and integrated AI capabilities for international clients in a 6-member team.",
-      "Improved application performance 10% via query optimization, indexing, and profiling of production workloads.",
-      "Diagnosed production issues through root-cause analysis, delivering reliable releases across cross-functional teams.",
+      "Developing an embedded edge-AI FPGA platform for Weigh-In-Motion calibration, fusing computer vision and axle-sensor streams for real-time vehicle weight estimation.",
+      "Building automated multimodal data-acquisition and validation pipelines across 10,000+ test passages, profiling latency and accuracy pre-deployment.",
     ],
   },
   {
     role: "Research Assistant",
-    org: "Secured IoT Devices Lab, Pakistan",
-    date: "2023",
+    org: "System-on-Chip Lab, NUST",
+    date: "Mar 2024 – Aug 2024",
     points: [
-      "Developed low-level embedded C firmware for ESP32 sensor nodes over SPI and I2C for real-time acquisition from analog and digital peripherals.",
+      "Researched fault-tolerant system architectures for deep neural networks, targeting resilience under hardware-induced errors.",
+      "Implemented TinyML inference pipelines for edge deployment, optimizing for latency under constrained resources.",
+      "Programmed FPGAs in Verilog for hardware customization, tuning performance and efficiency.",
+    ],
+  },
+  {
+    role: "FPGA Intern",
+    org: "DreamBig Semiconductors",
+    date: "Jan 2024 – Mar 2024",
+    points: [
+      "Shadowed the FPGA/ASIC design team on-site to study industry RTL flows, verification methodology, and chip design practices outside coursework.",
+    ],
+  },
+  {
+    role: "Research Assistant",
+    org: "Secured IoT Devices Lab, Peshawar",
+    date: "Oct 2022 – Jul 2023",
+    points: [
+      "Developed a LoRaWAN-based monitoring system with cloud integration, implementing embedded C firmware for sensor data acquisition on ESP32 nodes over SPI/I2C.",
+      "Built a Raspberry Pi–based gateway and secured the communication stack with cybersecurity protocols for a final-year IoT research project.",
     ],
   },
 ]
@@ -58,24 +69,43 @@ const experience = [
 const projects = [
   {
     name: "Winograd CNN Accelerator",
-    desc: "RTL accelerator on ZCU102 hitting 5.3 TOPS on VGG16 via dataflow optimization and simulation-based functional verification.",
+    desc: "RTL accelerator on ZCU102 hitting 5.3 TOPS on VGG16 via streamed dataflow optimization and simulation-based functional verification. Extended into an overlap-aware streaming architecture, ready for journal submission.",
     tags: ["RTL", "FPGA", "ZCU102"],
   },
   {
-    name: "POSIT Multiplier",
-    desc: "Variable-precision arithmetic RTL validating 4–7% power reduction through switching-activity analysis at synthesis.",
+    name: "Power-Efficient POSIT Multiplier",
+    desc: "Timing-aware Verilog RTL for decode, multiply, and recode pipeline stages; synthesized in Synopsys Design Compiler, validating 4–7% power reduction via switching-activity analysis.",
     tags: ["Arithmetic", "Low Power"],
   },
   {
-    name: "Depthwise CNN Accelerator",
-    desc: "Parallel RTL architecture achieving 20× speedup through dataflow parallelism.",
+    name: "Depthwise Separable CNN Accelerator",
+    desc: "Parallel RTL architecture for MobileNet-class models achieving ~20× speedup through dataflow parallelism.",
     tags: ["RTL", "Parallelism"],
   },
   {
     name: "DFT for Systolic Arrays",
-    desc: "Scan chains and BIST for systolic PE arrays enabling structured post-silicon validation.",
+    desc: "Scan chains and BIST for systolic PE arrays, improving fault coverage and enabling structured post-silicon validation.",
     tags: ["DFT", "BIST", "Verification"],
   },
+  {
+    name: "Fault Tolerance Enhancement for DNNs",
+    desc: "Investigated fault-tolerant architectures for deep neural network accelerators under hardware-induced error models.",
+    tags: ["Reliability", "DNN Hardware"],
+  },
+  {
+    name: "Dynamic 32×64 LED Matrix Display",
+    desc: "Xilinx FPGA design driving a high-resolution LED matrix at 30 fps, with UART-based visual data ingestion and clock/data synchronization.",
+    tags: ["RTL", "FPGA", "UART"],
+  },
+]
+
+const softSkills = [
+  { title: "Leadership & Mentorship", desc: "Led a project team and mentored peers (7-member team, K2X); mentored students as a Teaching Assistant." },
+  { title: "Communication & Presentation", desc: "Presented extensively in graduate courses; liaised with international clients and stakeholders." },
+  { title: "Teaching & Community", desc: "TA for Probability & Statistics (UofS, 2026) and high-school math; Microsoft Learn Student Ambassador; IEEE Student Member." },
+  { title: "Volunteering", desc: "Student Wellness Center, UofS — event logistics; Media Team, University Computer Society." },
+  { title: "Customer Service", desc: "POS operations, cash handling, and client-facing service, APS Stationary." },
+  { title: "Cross-Functional Collaboration", desc: "3+ years of general software engineering experience (K2X, Dcube, Auxcube, The Solutioners) coordinating with product, client, and research teams." },
 ]
 
 const education = [
@@ -160,6 +190,7 @@ const IndexPage: React.FC<PageProps> = () => {
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
+            <a href="#beyond">Beyond</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
@@ -186,9 +217,9 @@ const IndexPage: React.FC<PageProps> = () => {
               <a className="btn btn-ghost" href="#projects">View projects</a>
             </div>
           </div>
-          {/* Swap inner div for <img className="avatar" src="/me.jpg" alt="Syed Mohsin Shah" /> */}
           <div className="avatar-wrap">
-            <div className="avatar">[ ADD PHOTO ]<br />src/images</div>
+            <img className="avatar" src="/images/me.png" alt="Syed Mohsin Shah" />
+            {/* Swap inner div for <div className="avatar">[ ADD PHOTO ]<br />src/images</div> */}
           </div>
         </div>
       </header>
@@ -201,10 +232,9 @@ const IndexPage: React.FC<PageProps> = () => {
               <h2>What I work on</h2>
             </div>
             <p className="hero-sum" style={{ maxWidth: 760 }}>
-              I focus on the full RTL flow — microarchitecture, subsystem integration, timing
-              closure, and verification — for AI-acceleration hardware. My work spans Winograd and
-              depthwise CNN accelerators, variable-precision arithmetic for power reduction, and
-              design-for-test on systolic arrays, from SystemVerilog RTL down to synthesis and STA.
+              I focus on designing microarchitectures, integrating subsystems, ensuring timing
+              closure, and verifying AI accelerators. My work spans accross performance-optimized
+              designs, precision-aware arithmetic, and verification methodologies.
             </p>
           </div>
         </section>
@@ -295,6 +325,23 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
         </section>
 
+        <section id="beyond">
+          <div className="wrap">
+            <div className="section-head reveal">
+              <div className="k">Beyond the Bench</div>
+              <h2>Soft Skills</h2>
+            </div>
+            <div className="skills-grid reveal">
+              {softSkills.map(s => (
+                <div className="skill-card" key={s.title}>
+                  <h3>{s.title}</h3>
+                  <p style={{ color: "var(--muted)", fontSize: 14.5 }}>{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="contact" className="contact">
           <div className="wrap reveal">
             <div className="k" style={{ color: "var(--pink)" }}>Contact</div>
@@ -324,7 +371,8 @@ export default IndexPage
 export const Head: HeadFC = () => (
   <>
     <html lang="en" />
-    <title>Syed Mohsin Shah — RTL & FPGA Design</title>
+    <title>Syed Mohsin Shah</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta
       name="description"
       content="Syed Mohsin Shah — M.Sc. Electrical Engineering candidate specializing in RTL and FPGA design for AI accelerators."

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="55%" stop-color="#b14bff"/>
+      <stop offset="100%" stop-color="#ff2e97"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="10" fill="#05060d"/>
+
+  <!-- pins -->
+  <g stroke="url(#g)" stroke-width="2.5" stroke-linecap="round">
+    <line x1="16" y1="6"  x2="16" y2="14"/>
+    <line x1="26" y1="6"  x2="26" y2="14"/>
+    <line x1="38" y1="6"  x2="38" y2="14"/>
+    <line x1="48" y1="6"  x2="48" y2="14"/>
+
+    <line x1="16" y1="50" x2="16" y2="58"/>
+    <line x1="26" y1="50" x2="26" y2="58"/>
+    <line x1="38" y1="50" x2="38" y2="58"/>
+    <line x1="48" y1="50" x2="48" y2="58"/>
+
+    <line x1="6"  y1="16" x2="14" y2="16"/>
+    <line x1="6"  y1="26" x2="14" y2="26"/>
+    <line x1="6"  y1="38" x2="14" y2="38"/>
+    <line x1="6"  y1="48" x2="14" y2="48"/>
+
+    <line x1="50" y1="16" x2="58" y2="16"/>
+    <line x1="50" y1="26" x2="58" y2="26"/>
+    <line x1="50" y1="38" x2="58" y2="38"/>
+    <line x1="50" y1="48" x2="58" y2="48"/>
+  </g>
+
+  <!-- chip body -->
+  <rect x="14" y="14" width="36" height="36" rx="4" fill="#0c1020" stroke="url(#g)" stroke-width="2.5"/>
+
+  <!-- core die + circuit traces -->
+  <rect x="24" y="24" width="16" height="16" rx="2" fill="none" stroke="#00f0ff" stroke-width="2"/>
+  <circle cx="32" cy="32" r="3.4" fill="#ff2e97">
+    <animate attributeName="opacity" values="1;0.35;1" dur="2.4s" repeatCount="indefinite"/>
+  </circle>
+  <g stroke="#b14bff" stroke-width="1.6" stroke-linecap="round" opacity="0.9">
+    <line x1="20" y1="20" x2="24" y2="24"/>
+    <line x1="44" y1="20" x2="40" y2="24"/>
+    <line x1="20" y1="44" x2="24" y2="40"/>
+    <line x1="44" y1="44" x2="40" y2="40"/>
+  </g>
+</svg>

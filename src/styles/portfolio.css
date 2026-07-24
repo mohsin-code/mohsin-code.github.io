@@ -179,6 +179,7 @@ section { padding: 80px 0; position: relative; }
 }
 .skill-card:hover { transform: translateY(-4px); border-color: var(--cyan); box-shadow: 0 0 30px rgba(0, 240, 255, 0.12); }
 .skill-card h3 { font-family: "Orbitron", sans-serif; font-size: 14px; margin-bottom: 16px; color: var(--cyan); letter-spacing: 1px; }
+.skill-card p { line-height: 1.5; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
   font-family: "Share Tech Mono", monospace; font-size: 12.5px; padding: 5px 11px; border-radius: 3px;

@@ -269,3 +269,38 @@ footer span { color: var(--pink); }
   *, body::before, .glitch::before, .glitch::after, .avatar, .tl-item::before { animation: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ---- project pages + architecture animation ---- */
+.proj-card { display: block; }
+.proj-thumb .arch { position: relative; z-index: 1; width: 100%; height: 100%; padding: 8px; }
+.proj-hero { padding: 70px 0 30px; }
+.proj-hero h1 { font-family: "Orbitron", sans-serif; font-size: clamp(30px, 5vw, 52px); line-height: 1.1; text-transform: uppercase; }
+.arch-frame {
+  margin-top: 36px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.08); padding: 12px;
+}
+.arch { display: block; width: 100%; height: auto; color: var(--cyan); font-family: "Share Tech Mono", monospace; }
+.arch .edge path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-dasharray: 6 6; opacity: 0.7; animation: flow 1s linear infinite; }
+.arch .edge.ctrl { color: var(--purple); }
+.arch .edge.ctrl path { stroke-dasharray: 2 5; animation-duration: 2s; }
+.arch .packet { fill: var(--pink); filter: drop-shadow(0 0 4px var(--pink)); }
+.arch .node rect { fill: var(--bg-soft); stroke: var(--border); stroke-width: 1.5; }
+.arch .node { animation: nodeglow 3s ease-in-out infinite; }
+.arch .node.accent rect { stroke: var(--cyan); }
+.arch .node text { fill: var(--text); font-size: 13px; text-anchor: middle; dominant-baseline: central; }
+@keyframes flow { to { stroke-dashoffset: -12; } }
+@keyframes nodeglow { 50% { filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.45)); } }
+.proj-section { padding: 40px 0; }
+.proj-section .section-head { margin-bottom: 20px; }
+.proj-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.proj-list li { position: relative; padding-left: 20px; color: var(--muted); font-size: 16px; }
+.proj-list li::before { content: "▹"; position: absolute; left: 0; color: var(--pink); }
+.badge {
+  font-family: "Share Tech Mono", monospace; font-size: 11px; color: var(--yellow); border: 1px solid var(--yellow);
+  padding: 1px 6px; border-radius: 3px; margin-right: 8px;
+}
+figure { margin-top: 20px; }
+figure img { background: #fff; border-radius: var(--radius); padding: 8px; }
+figcaption { font-family: "Share Tech Mono", monospace; color: var(--muted); font-size: 12.5px; margin-top: 6px; }
+.code { background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; overflow-x: auto; font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { .arch .packet { display: none; } .arch .edge path, .arch .node { animation: none; } }

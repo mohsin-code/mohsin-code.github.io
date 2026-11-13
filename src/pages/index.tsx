@@ -1,6 +1,8 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import { Link, type HeadFC, type PageProps } from "gatsby"
 import "../styles/portfolio.css"
+import { projects } from "../data/projects"
+import ArchDiagram from "../components/ArchDiagram"
 
 const EMAIL = "mohsinshah3171@gmail.com"
 const PHONE = "+1 306 380 5477"
@@ -63,39 +65,6 @@ const experience = [
       "Developed a LoRaWAN-based monitoring system with cloud integration, implementing embedded C firmware for sensor data acquisition on ESP32 nodes over SPI/I2C.",
       "Built a Raspberry Pi–based gateway and secured the communication stack with cybersecurity protocols for a final-year IoT research project.",
     ],
-  },
-]
-
-const projects = [
-  {
-    name: "Winograd CNN Accelerator",
-    desc: "RTL accelerator on ZCU102 hitting 5.3 TOPS on VGG16 via streamed dataflow optimization and simulation-based functional verification. Extended into an overlap-aware streaming architecture, ready for journal submission.",
-    tags: ["RTL", "FPGA", "ZCU102"],
-  },
-  {
-    name: "Power-Efficient POSIT Multiplier",
-    desc: "Timing-aware Verilog RTL for decode, multiply, and recode pipeline stages; synthesized in Synopsys Design Compiler, validating 4–7% power reduction via switching-activity analysis.",
-    tags: ["Arithmetic", "Low Power"],
-  },
-  {
-    name: "Depthwise Separable CNN Accelerator",
-    desc: "Parallel RTL architecture for MobileNet-class models achieving ~20× speedup through dataflow parallelism.",
-    tags: ["RTL", "Parallelism"],
-  },
-  {
-    name: "DFT for Systolic Arrays",
-    desc: "Scan chains and BIST for systolic PE arrays, improving fault coverage and enabling structured post-silicon validation.",
-    tags: ["DFT", "BIST", "Verification"],
-  },
-  {
-    name: "Fault Tolerance Enhancement for DNNs",
-    desc: "Investigated fault-tolerant architectures for deep neural network accelerators under hardware-induced error models.",
-    tags: ["Reliability", "DNN Hardware"],
-  },
-  {
-    name: "Dynamic 32×64 LED Matrix Display",
-    desc: "Xilinx FPGA design driving a high-resolution LED matrix at 30 fps, with UART-based visual data ingestion and clock/data synchronization.",
-    tags: ["RTL", "FPGA", "UART"],
   },
 ]
 
@@ -291,9 +260,8 @@ const IndexPage: React.FC<PageProps> = () => {
             </div>
             <div className="proj-grid reveal">
               {projects.map(p => (
-                <div className="proj-card" key={p.name}>
-                  {/* Swap for <img src="..." alt={p.name} /> */}
-                  <div className="proj-thumb">Add image</div>
+                <Link className="proj-card" to={`/projects/${p.slug}/`} key={p.slug}>
+                  <div className="proj-thumb"><ArchDiagram arch={p.arch} /></div>
                   <div className="proj-body">
                     <h3>{p.name}</h3>
                     <p>{p.desc}</p>
@@ -301,7 +269,7 @@ const IndexPage: React.FC<PageProps> = () => {
                       {p.tags.map(t => <span key={t}>{t}</span>)}
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
